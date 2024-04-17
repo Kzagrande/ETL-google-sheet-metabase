@@ -1,2 +1,5 @@
+import os 
+
 def log(mensagem):
-    print('Adicionando log via função', mensagem)
+    os.getenv("PROD_ENV")
+    print('log event', mensagem)
