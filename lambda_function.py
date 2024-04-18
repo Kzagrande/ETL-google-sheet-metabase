@@ -1,7 +1,7 @@
 import json
 from data_extract import google_sheet_extractive
 from data_transform import data_transform  # Importe a função data_transform
-
+ 
 def lambda_handler(event, context):
     # Executar a função google_sheet_extractive
     df = google_sheet_extractive()
