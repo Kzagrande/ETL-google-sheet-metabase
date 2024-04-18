@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Generate ZIP
         run: |
-          zip deployment.zip *.py
+          zip deployment.zip *.py *.json
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
