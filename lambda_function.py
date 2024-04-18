@@ -1,8 +1,9 @@
 import json
 from logs import log
+from googleSheetAuth import main
 
 def lambda_handler(event, context):
-    # TODO implement
+    main()         
     log('event' + json.dumps(event))
     return {
         'statusCode': 200,
