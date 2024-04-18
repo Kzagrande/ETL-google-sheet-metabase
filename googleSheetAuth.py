@@ -1,6 +1,8 @@
+import os
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2 import service_account
+import json
 
 # If modifying these scopes, update the list accordingly
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
@@ -13,11 +15,14 @@ def google_sheet_main():
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
-    # Path to your service account JSON file
-    SERVICE_ACCOUNT_FILE = 'C:/Users/casag/sites/lambda-rpa-uph/my_service_account_credentials.json'
+    # Get service account JSON from environment variable
+    service_account_json = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON')
 
-    creds = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    # Parse service account JSON string to dictionary
+    creds_dict = json.loads(service_account_json)
+
+    # Create credentials object from dictionary
+    creds = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
 
     try:
         service = build("sheets", "v4", credentials=creds)
