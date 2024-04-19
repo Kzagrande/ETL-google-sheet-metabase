@@ -21,7 +21,8 @@ def google_sheet_extractive():
     """
 
     # ------------- LOCAL ----------------
-    SERVICE_ACCOUNT_FILE = 'C:/Users/casag/sites/lambda-rpa-uph/my_service_account_credentials.json'
+    # SERVICE_ACCOUNT_FILE = 'C:/Users/casag/sites/lambda-rpa-uph/my_service_account_credentials.json'
+    SERVICE_ACCOUNT_FILE = "/root/RpaUph/lambda-rpa-uph/my_service_account_credentials.json"
     creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     
