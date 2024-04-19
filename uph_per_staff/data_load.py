@@ -4,6 +4,9 @@ import pandas as pd
 import sqlalchemy
 import pymysql
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Configurando o logger
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +15,7 @@ logger = logging.getLogger(__name__)
 def insert_into_database(df):
     engine = create_engine("mysql+pymysql://" + \
                            "root" + ":" + \
-                           "onepiece9960" + "@" + "localhost" + \
+                           os.getenv('DATABASE_PASS') + "@" + "localhost" + \
                            ":" + "3306" + "/" + "ware_ws_shein" + \
                            "?" + "charset=utf8mb4")
 

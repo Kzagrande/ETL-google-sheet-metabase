@@ -5,7 +5,10 @@ from google.oauth2 import service_account
 import json
 import pandas as pd
 import logging
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 # Configurando o logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,7 +27,7 @@ def google_sheet_extractive():
 
     # ------------- LOCAL ----------------
     # SERVICE_ACCOUNT_FILE = 'C:/Users/casag/sites/lambda-rpa-uph/my_service_account_credentials.json'
-    SERVICE_ACCOUNT_FILE = "/root/RpaUph/lambda-rpa-uph/my_service_account_credentials.json"
+    SERVICE_ACCOUNT_FILE = os.getenv('SERVICE_ACCOUNT_FILE')
     creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     
