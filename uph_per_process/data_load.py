@@ -27,13 +27,6 @@ def insert_into_database(df):
     try:
         # inserindo dados no banco de dados
         df.to_sql("uph_per_process", conn, index=False, if_exists="append")
-
-        @event.listens_for(engine, "before_cursor_execute")
-        def receive_before_cursor_execute(conn,
-                                          cursor, statement, params, context, executemany):
-            if executemany:
-                cursor.fast_executemany = True
-
         logger.info("Dados inseridos no banco de dados com sucesso.")
 
     except Exception as e:
