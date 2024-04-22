@@ -1,0 +1,15 @@
+# Arquivos e diretórios específicos do Python
+venv/
+.env
+
+# Arquivos compilados Python
+*.pyc
+__pycache__/
+
+# Ambientes de desenvolvimento específicos
+.idea/
+.vscode/
+
+# Outros arquivos gerados
+*.log
+*.sqlite3
