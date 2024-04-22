@@ -61,6 +61,11 @@ def transform_and_filter_data(df):
     filtered_df.loc[:, 'effective_hours'] = filtered_df['effective_hours'].str.replace('.', '').str.replace(',', '.').astype(float)
     filtered_df.loc[:, 'UPH'] = filtered_df['UPH'].str.replace('.', '').str.replace('.', '').str.replace(',', '.').astype(float)
     filtered_df.loc[:, 'real_quantity'] = filtered_df['real_quantity'].str.replace('.', '').str.replace(',', '.').astype(float)
+    excel_file = "data_staff.xlsx"
+    filtered_df.to_excel(excel_file, index=False)
+
+
+    print('week',filtered_df['week'])
     filtered_df['week'] = filtered_df['week'].astype(int)
     logger.info("Tipos de dados das colunas convertidos com sucesso.")
 

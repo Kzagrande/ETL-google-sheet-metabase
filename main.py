@@ -9,5 +9,5 @@ async def second_function():
 
 
 async def main():
-    await first_function()
+#     await first_function()
     await second_function()

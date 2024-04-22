@@ -3,9 +3,9 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 import json
-from data_extract import google_sheet_extractive
+from uph_per_process.data_extract_staff import google_sheet_extractive
 from data_transform import transform_and_filter_data
-from data_load import insert_into_database
+from uph_per_process.data_load_staff import insert_into_database
  
 def uph_per_proccess():
     try:
