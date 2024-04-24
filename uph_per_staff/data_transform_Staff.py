@@ -41,7 +41,7 @@ def transform_and_filter_data(df):
 
     # Filtra os dados com base na data de hoje e no nome da primeira coluna
     # today_date = datetime.today().date()
-    yesterday_date = datetime.today().date() - timedelta(days=1)
+    yesterday_date = datetime.today().date() - timedelta(days=2)
     df['day_analyzed'] = pd.to_datetime(df['day_analyzed'])
     warehouse_names = ['巴西瓜卢流斯发货仓二BR_GRU_SW 2', '圣保罗GLP中转仓Sao Paulo GLP Transit WH']
     filtered_df = df[(df['day_analyzed'].dt.date == yesterday_date) & df['warehouse'].isin(warehouse_names)]
@@ -61,6 +61,7 @@ def transform_and_filter_data(df):
     filtered_df.loc[:, 'effective_hours'] = filtered_df['effective_hours'].str.replace('.', '').str.replace(',', '.').astype(float)
     filtered_df.loc[:, 'UPH'] = filtered_df['UPH'].str.replace('.', '').str.replace('.', '').str.replace(',', '.').astype(float)
     filtered_df.loc[:, 'real_quantity'] = filtered_df['real_quantity'].str.replace('.', '').str.replace(',', '.').astype(float)
+    filtered_df.loc[:, 'effective_quantity'] = filtered_df['effective_quantity'].str.replace('.', '').str.replace(',', '.').astype(float)
     excel_file = "data_staff.xlsx"
     filtered_df.to_excel(excel_file, index=False)
 
